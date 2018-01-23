@@ -307,4 +307,119 @@ class Solution {
 
 ### 7.Valid Parentheses
 
-**d**
+**description:**
+
+Given a string containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
+
+The brackets must close in the correct order, `"()"` and `"()[]{}"` are all valid but `"(]"` and `"([)]"` are not.
+
+
+
+**solution:**
+
+```java
+class Solution {
+    public boolean isValid(String s) {
+         if(s == null || "".equals(s.trim())){  
+            return false;   
+        }  
+        char array[] = s.toCharArray();  
+        int len = s.length();  
+        Stack<Character> stack = new Stack<Character>();  
+        for(int i = 0; i < len; i++){  
+            if(array[i] == '(' || array[i] == '{' || array[i] == '['){  
+                stack.push(array[i]);  
+            }else if(array[i] == ')' || array[i] == '}' || array[i] == ']'){  
+                if(stack.isEmpty()){  
+                    return false;  
+                }  
+                char c = stack.peek();  
+                stack.pop();  
+                if(array[i] == ')'){  
+                    if(c != '('){  
+                        return false;  
+                    }  
+                }  
+                if(array[i] == '}'){  
+                    if(c != '{'){  
+                        return false;  
+                    }  
+                }  
+                if(array[i] == ']'){  
+                    if(c != '['){  
+                        return false;  
+                    }  
+                }  
+            }  
+        }  
+        if(!stack.isEmpty()){  
+            return false;  
+        }  
+        return true;  
+    }
+}
+```
+
+
+
+---
+
+
+
+### 8. Merge Two Sorted Lists
+
+**description:**
+
+Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+
+
+
+**Example:**
+
+```
+Input: 1->2->4, 1->3->4
+Output: 1->1->2->3->4->4
+```
+
+
+
+**solution:**
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        
+        if (l2 == null) {
+            return l1;
+        }
+        
+        ListNode temp;
+        if (l1.val < l2.val) {
+            temp = l1;
+            temp.next = mergeTwoLists(l1.next, l2);
+        }
+        
+        else  {
+            temp = l2;
+            temp.next = mergeTwoLists(l1, l2.next);
+        }
+        return temp;
+    }
+}
+```
+
+
+
+---
+
