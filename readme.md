@@ -305,5 +305,6 @@ class Solution {
 
 
 
+### 7.Valid Parentheses
 
-
+**d**
