@@ -425,7 +425,7 @@ class Solution {
 
 
 
-### 26. Remove Duplicates from Sorted Array
+### 9. Remove Duplicates from Sorted Array
 
 **description:**
 
@@ -442,3 +442,54 @@ Your function should return length = 2, with the first two elements of nums bein
 It doesn't matter what you leave beyond the new length.
 ```
 
+**solution:**
+
+```java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if (nums.length == 0) return 0;
+        int i = 0;
+        for (int j = 1; j < nums.length; j++) {
+            if (nums[j] != nums[i]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i + 1;
+    }
+}
+```
+
+
+
+---
+
+
+
+### 10. Maximum Depth of Binary Tree
+
+**description:**
+
+Given a binary tree, find its maximum depth.
+
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+**solution:**
+
+```
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if (root == null) return 0;      
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+}
+```
