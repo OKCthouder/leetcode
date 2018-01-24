@@ -726,6 +726,10 @@ class Solution {
 
 
 
+---
+
+
+
 ### 15. Merge Sorted Array
 
 **description:**
@@ -737,3 +741,31 @@ You may assume that *nums1* has enough space (size that is greater or equal to *
 
 **solution:**
 
+```java
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        while (n > 0) nums1[m+n-1] = (m == 0) || nums2[n - 1] > nums1[m - 1] ? nums2[--n] : nums1[--m];
+    }
+}
+```
+
+
+
+---
+
+
+
+### 16. Maxium Subarray
+
+**description:**
+
+Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
+
+For example, given the array `[-2,1,-3,4,-1,2,1,-5,4]`,
+the contiguous subarray `[4,-1,2,1]` has the largest sum = `6`.
+
+**solution:**
+
+```
+
+```
