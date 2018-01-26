@@ -1099,3 +1099,65 @@ class Solution(object):
         except:
             return False
 ```
+
+
+---
+
+
+
+### 24. Min Stack
+
+**description:**
+
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+- push(x) -- Push element x onto stack.
+- pop() -- Removes the element on top of the stack.
+- top() -- Get the top element.
+- getMin() -- Retrieve the minimum element in the stack.
+
+**Example:**
+
+```java
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> Returns -3.
+minStack.pop();
+minStack.top();      --> Returns 0.
+minStack.getMin();   --> Returns -2.
+```
+
+**solution:**
+
+```java
+public class MinStack {
+    
+    Stack<Integer> stackNum = new Stack<Integer>();
+    Stack<Integer> stackMin = new Stack<Integer>();
+    
+    public void push(int x) {
+        stackNum.push(x);
+        if(stackMin.isEmpty() || stackMin.peek() >= x) {
+            stackMin.push(x);
+        }
+    }
+
+    public void pop() {
+        int top = stackNum.pop();
+        if(top <= stackMin.peek()) {
+            stackMin.pop();
+        }
+    }
+
+    public int top() {
+        return stackNum.peek();
+    }
+
+    public int getMin() {
+        return stackMin.peek();
+    }
+}
+```
+
