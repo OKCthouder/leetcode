@@ -971,6 +971,9 @@ class Solution:
         
         for row_num in range(numRows):
             row = [None for _ in range(row_num + 1)]
+           # row = []
+		  # for _ in range(row_num + 1):
+   		  #  row += [None]
             row[0] = 1
             row[-1] = 1
         
@@ -1024,3 +1027,39 @@ class Solution:
             r -= 1
         return True
 ```
+
+
+---
+
+
+
+### 22. Single Number
+
+**description:**
+
+Given an array of integers, every element appears *twice* except for one. Find that single one.
+
+**Note:**
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+**solutions:**
+
+```python
+class Solution:
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        return 2 * sum(set(nums)) - sum(nums)
+    
+  #  int result = 0;
+  #  for (int i = 0; i<n; i++)
+  #   {
+  #      result ^=A[i];
+  #  }
+  #  return result;
+```
+
+
+
