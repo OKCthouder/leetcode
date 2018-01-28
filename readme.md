@@ -1534,7 +1534,63 @@ Given a list of non-negative integers representing the amount of money of each h
 
 **solution:**
 
+```java
+class Solution {
+    public int rob(int[] nums) {
+        if (nums.length == 0) return 0;
+        if (nums.length == 1) return nums[0];
+        
+        int[] mark = new int[nums.length];
+        mark[0] = nums[0];
+        mark[1] = Math.max(nums[0], nums[1]);
+        
+        for (int i = 2; i < nums.length; i++) {
+            mark[i] = Math.max(nums[i] + mark[i-2], mark[i - 1]);
+        }
+        return mark[nums.length - 1];
+    }
+}
 ```
 
+
+
+---
+
+
+
+### 35. Happy Number
+
+**description:**
+
+Write an algorithm to determine if a number is "happy".
+
+A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.
+
+**Example: **19 is a happy number
+
+- 12 + 92 = 82
+- 82 + 22 = 68
+- 62 + 82 = 100
+- 12 + 02 + 02 = 1
+
+**solution:**
+
+```java
+class Solution {
+public boolean isHappy(int n) {
+        Set<Integer> s = new HashSet<Integer>();
+        while (n != 1) {
+            int t = 0;
+            while (n != 0) {
+                t += (n % 10) * (n % 10);
+                n /= 10;
+            }
+            n = t;
+            if (s.contains(n)) break;
+            else s.add(n);
+        }
+        return n == 1;
+    }
+}
 ```
 
