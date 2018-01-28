@@ -1028,7 +1028,6 @@ class Solution:
         return True
 ```
 
-
 ---
 
 
@@ -1099,7 +1098,6 @@ class Solution(object):
         except:
             return False
 ```
-
 
 ---
 
@@ -1415,5 +1413,35 @@ class Solution(object):
             n /= 5
             r += n
         return r
+```
+
+
+
+---
+
+
+
+### 31. Number of 1 Bits
+
+**description:**
+
+Write a function that takes an unsigned integer and returns the number of ’1' bits it has (also known as the [Hamming weight](http://en.wikipedia.org/wiki/Hamming_weight)).
+
+For example, the 32-bit integer ’11' has binary representation `00000000000000000000000000001011`, so the function should return 3.
+
+```python
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return bin(n).count('1')
+
+        # c = 0
+        # while n:
+        #   n &= n - 1
+        #   c += 1
+        # return c
 ```
 
