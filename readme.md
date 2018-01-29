@@ -1628,3 +1628,47 @@ class Solution {
 }
 ```
 
+
+
+---
+
+
+
+### 37. Reverse Linked List
+
+**description:**
+
+Reverse a singly linked list.
+
+**solution:**
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+    // is there something to reverse?
+    if (head != null && head.next != null)
+    {
+        ListNode pivot = head;
+        ListNode frontier = null;
+        while (pivot != null && pivot.next != null)
+        {
+            frontier = pivot.next;
+            pivot.next = pivot.next.next;
+            frontier.next = head;
+            head = frontier;
+        }
+    }
+    
+    return head;
+ }
+}
+```
+
