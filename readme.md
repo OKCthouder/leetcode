@@ -2379,3 +2379,54 @@ public int uniquePaths(int m, int n) {
 }
 ```
 
+---
+
+### 54. Subsets
+
+**description:**
+
+Given a set of **distinct** integers, *nums*, return all possible subsets (the power set).
+
+**Note:** The solution set must not contain duplicate subsets.
+
+For example,
+If **nums** = `[1,2,3]`, a solution is:
+
+```
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+```
+
+**solution:**
+
+```java
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+    List<List<Integer>> ans = new ArrayList<>();
+    ans.add(new ArrayList<>());
+    Arrays.sort(nums);
+
+    for (int num : nums)
+    {
+        int size = ans.size();
+        for (int i = 0; i < size; i++)
+        {
+            List<Integer> tmp = new ArrayList<>(ans.get(i));
+            tmp.add(num);
+            ans.add(tmp);
+        }
+    }
+    
+    return ans;
+}
+}
+```
+
